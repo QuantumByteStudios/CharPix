@@ -1,13 +1,19 @@
 from asyncio.windows_events import NULL
 import cv2 as cv
 import numpy as np
+import os
+import platform
 
-WIDTH = 20
-HEIGHT = 20
+if platform.system() == "Windows":
+    os.system("cls")
+else:
+    os.system("clear")
 
-img = np.zeros((WIDTH, HEIGHT, 3), dtype=np.uint8)
-
-ROW = 0
+# Clear Previos Data
+f = open("tempGen.txt", "a")
+f.truncate(0)
+f = open("tempGenO.txt", "a")
+f.truncate(0)
 
 RGB_White = (255, 255, 255)
 NUL = (0, 0, 0)      # BLACK
@@ -40,13 +46,20 @@ Z = (57, 167, 142)   # ZOMP
 SPACE = (222, 222, 222)
 
 STRING = input("Enter Your Message: ")
+STRING = STRING.upper()
+
+# Default Values For Now
+WIDTH = 20
+HEIGHT = 20
+
+img = np.zeros((WIDTH, HEIGHT, 3), dtype=np.uint8)
 
 ROW = i = 0
 
 for inst in range(0, len(STRING)):
     ALPHA = STRING[inst]
     # print(f"{ROW} + {i}")
-    if inst == WIDTH:
+    if inst == WIDTH-1:
         ROW = ROW + 1
         i = 0
     else:

@@ -1,6 +1,13 @@
+import platform
 import cv2
 import numpy
+import os
 img = cv2.imread('OUTPUT.png')
+
+if platform.system() == "Windows":
+    os.system("cls")
+else:
+    os.system("clear")
 
 RGB_White = "[255255255]"
 NUL = "[000]"  # BLACK
