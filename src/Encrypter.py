@@ -59,7 +59,7 @@ ROW = i = 0
 for inst in range(0, len(STRING)):
     ALPHA = STRING[inst]
     # print(f"{ROW} + {i}")
-    if inst == WIDTH-1:
+    if i == WIDTH:
         ROW = ROW + 1
         i = 0
     else:
