@@ -49,8 +49,8 @@ STRING = input("Enter Your Message: ")
 STRING = STRING.upper()
 
 # Default Values For Now
-WIDTH = 20
-HEIGHT = 20
+WIDTH = 10
+HEIGHT = 10
 
 img = np.zeros((WIDTH, HEIGHT, 3), dtype=np.uint8)
 

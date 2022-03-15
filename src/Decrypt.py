@@ -2,7 +2,14 @@ import platform
 import cv2
 import numpy
 import os
+
 img = cv2.imread('OUTPUT.png')
+
+# get dimensions of image
+dimensions = img.shape
+# height, width, number of channels in image
+height = img.shape[0]
+width = img.shape[1]
 
 if platform.system() == "Windows":
     os.system("cls")
@@ -39,7 +46,7 @@ Y = "[2552400]"  # YELLOWROSE
 Z = "[57167142]"  # ZOMP
 SPACE = "[222222222]"
 
-WIDTH = 20
+WIDTH = width
 ROW = i = 0
 f = open("tempGen.txt", 'a')
 
