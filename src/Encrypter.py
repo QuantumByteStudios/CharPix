@@ -12,8 +12,10 @@ else:
 # Clear Previous Data
 f = open("tempGen.txt", "a", encoding="utf_8")
 f.truncate(0)
+f.close()
 f = open("tempGenO.txt", "a", encoding="utf_8")
 f.truncate(0)
+f.close()
 
 RGB_White = (255, 255, 255)
 NUL = (0, 0, 0)      # BLACK
