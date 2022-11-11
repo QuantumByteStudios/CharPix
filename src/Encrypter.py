@@ -10,9 +10,9 @@ else:
     os.system("clear")
 
 # Clear Previous Data
-f = open("tempGen.txt", "a")
+f = open("tempGen.txt", "a", encoding="utf_8")
 f.truncate(0)
-f = open("tempGenO.txt", "a")
+f = open("tempGenO.txt", "a", encoding="utf_8")
 f.truncate(0)
 
 RGB_White = (255, 255, 255)

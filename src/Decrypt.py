@@ -48,7 +48,7 @@ SPACE = "[222222222]"
 
 WIDTH = width
 ROW = i = 0
-f = open("tempGen.txt", 'a')
+f = open("tempGen.txt", 'a', encoding="utf_8")
 
 for inst in range(0, WIDTH):
     for i in range(0, WIDTH):
@@ -63,16 +63,16 @@ f.close()
 
 data = ""
 
-f = open("tempGen.txt", 'r+')
-fO = open("tempGenO.txt", 'r+')
+f = open("tempGen.txt", 'r+', encoding="utf_8")
+fO = open("tempGenO.txt", 'r+', encoding="utf_8")
 for line in f:
     fO.write(line.replace(' ', ''))
 
 f.close()
 fO.close()
 
-f2 = open("final.txt", 'r+')
-fO = open("tempGenO.txt", 'r+')
+f2 = open("final.txt", 'r+', encoding="utf_8")
+fO = open("tempGenO.txt", 'r+', encoding="utf_8")
 
 checkWords = ("[255255255]", "[000]", "[153102204]", "[00255]", "[0255255]", "[1016733]", "[194178128]", "[18151137]", "[0171102]", "[170152169]", "[113166210]", "[248222126]", "[195176145]", "[214202221]",
               "[2550255]", "[233255219]", "[01280]", "[25440162]", "[1425889]", "[1836514]", "[24419648]", "[216191216]", "[136120195]", "[64130109]", "[06666]", "[115134120]", "[2552400]", "[57167142]", "[222222222]")
