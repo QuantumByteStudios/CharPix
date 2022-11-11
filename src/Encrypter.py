@@ -3,11 +3,12 @@ import cv2 as cv
 import numpy as np
 import os
 import platform
+import subprocess
 
 if platform.system() == "Windows":
-    os.system("cls")
+    subprocess.run('cls', shell=True)
 else:
-    os.system("clear")
+    subprocess.run('clear', shell=True)
 
 # Clear Previous Data
 f = open("tempGen.txt", "a", encoding="utf_8")
