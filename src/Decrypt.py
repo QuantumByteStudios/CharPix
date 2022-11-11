@@ -1,7 +1,7 @@
 import platform
 import cv2
 import numpy
-import os
+import subprocess
 
 img = cv2.imread('OUTPUT.png')
 
@@ -12,9 +12,9 @@ height = img.shape[0]
 width = img.shape[1]
 
 if platform.system() == "Windows":
-    os.system("cls")
+    subprocess.run("cls")
 else:
-    os.system("clear")
+    subprocess.run("clear")
 
 RGB_White = "[255255255]"
 NUL = "[000]"  # BLACK

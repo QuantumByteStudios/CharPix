@@ -1,14 +1,18 @@
 from asyncio.windows_events import NULL
 import cv2 as cv
 import numpy as np
-import os
 import platform
 import subprocess
 
-if platform.system() == "Windows":
-    subprocess.run('cls', shell=True)
-else:
-    subprocess.run('clear', shell=True)
+
+def clear():
+    if platform.system() == "Windows":
+        subprocess.run('cls', shell=True)
+    else:
+        subprocess.run('clear', shell=True)
+
+
+clear()
 
 # Clear Previous Data
 f = open("tempGen.txt", "a", encoding="utf_8")
