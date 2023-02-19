@@ -1,18 +1,9 @@
 from asyncio.windows_events import NULL
 import cv2 as cv
 import numpy as np
-import platform
-import subprocess
+import utils as session
 
-
-def clear():
-    if platform.system() == "Windows":
-        subprocess.run('cls', shell=True)
-    else:
-        subprocess.run('clear', shell=True)
-
-
-clear()
+session.clear()
 
 # Clear Previous Data
 f = open("tempGen.txt", "a", encoding="utf_8")
@@ -129,7 +120,7 @@ for inst in range(0, len(STRING)):
         i = i+1
 
 cv.imwrite("OUTPUT.png", img)
-cv.imshow("OUTPUT", img)
+cv.imshow("OUTPUT.png", img)
 
 cv.waitKey(0)
 cv.destroyAllWindows()
