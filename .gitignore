@@ -1,5 +1,1 @@
-*.txt
 *.png
-src/*.txt
-src/*.png
-__pycache__
