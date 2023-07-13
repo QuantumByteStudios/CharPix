@@ -3,7 +3,7 @@ from PIL import Image
 
 subprocess.call("cls", shell=True)
 
-file = open("file.txt", "r")
+file = open("data.txt", "r")
 data = file.read()
 text = data
 
