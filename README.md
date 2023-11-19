@@ -1,6 +1,5 @@
-# Project Status
-
-This project is currently in the process of being rewritten. We expect to release the new and improved version soon.
+> [!WARNING]
+> This project is unfinished.
 
 Project Description
 
