@@ -40,8 +40,12 @@ print("Binary: " + text)
 print("Length: " + str(textLength))
 print("Width: " + str(width) + " Height: " + str(height))
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+MAGENTA = (255, 0, 255)
+
 # Image Processing
-img = Image.new("RGB", (width, height), "white")
+img = Image.new("RGB", (width, height), MAGENTA)
 
 pixels = img.load()
 
@@ -49,9 +53,6 @@ imageWidth = img.size[0]
 
 # Write pixels
 # pixels[X, Y] = (R, G, B)
-
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
 
 x = 0 # X coordinate
 y = 0 # Y coordinate
