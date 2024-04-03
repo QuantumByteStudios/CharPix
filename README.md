@@ -1,3 +1,8 @@
+
+<h1 align="center">
+  <img width="200px" src="https://github.com/QuantumByteStudios/CharPix/assets/81068582/8b405070-1847-452b-a37e-5fcc4eb298fa">
+</h1>
+
 > [!WARNING]
 > This project is unfinished.
 
