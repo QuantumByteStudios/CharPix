@@ -1,8 +1,14 @@
 import subprocess
+import os
 from PIL import Image
 
+
 def clear_console():
-    subprocess.call("cls", shell=True)
+    if os.name == "nt":
+        subprocess.call("cls", shell=True)
+    else:
+        subprocess.call("clear", shell=True)
+
 
 def read_image(file_path):
     try:
@@ -10,6 +16,7 @@ def read_image(file_path):
     except FileNotFoundError:
         print(f"Error: File '{file_path}' not found.")
         return None
+
 
 def decode_image(image):
     pixels = image.load()
@@ -23,6 +30,7 @@ def decode_image(image):
 
     return binary_data
 
+
 def binary_to_text(binary_data):
     text = ""
     for i in range(0, len(binary_data), 8):
@@ -30,9 +38,10 @@ def binary_to_text(binary_data):
         text += chr(int(byte, 2))
     return text
 
+
 def main():
     clear_console()
-    
+
     file_path = "image.png"
     encoded_image = read_image(file_path)
 
@@ -42,6 +51,7 @@ def main():
 
         # print("Decrypted Binary: " + binary_data)
         print("Decrypted Text: " + decrypted_text)
+
 
 if __name__ == "__main__":
     main()
