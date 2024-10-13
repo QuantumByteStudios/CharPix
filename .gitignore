@@ -1,4 +1,4 @@
-image.png
-data.txt
+*.png
+*.txt
 .vscode/
 extra.py
