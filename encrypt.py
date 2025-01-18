@@ -2,6 +2,7 @@ import subprocess
 from PIL import Image
 import concurrent.futures
 import time
+import os
 
 
 def clear_console():
