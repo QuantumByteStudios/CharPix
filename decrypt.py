@@ -1,6 +1,7 @@
 import subprocess
 import os
 from PIL import Image
+import time
 
 
 def clear_console():
@@ -46,10 +47,18 @@ def main():
     encoded_image = read_image(file_path)
 
     if encoded_image is not None:
+        start_time_decoding = time.time()
         binary_data = decode_image(encoded_image)
-        decrypted_text = binary_to_text(binary_data)
+        end_time_decoding = time.time()
 
-        # print("Decrypted Binary: " + binary_data)
+        start_time_text_conversion = time.time()
+        decrypted_text = binary_to_text(binary_data)
+        end_time_text_conversion = time.time()
+
+        print(f"Time taken to decode image: {
+              end_time_decoding - start_time_decoding:.6f} seconds")
+        print(f"Time taken to convert binary to text: {
+              end_time_text_conversion - start_time_text_conversion:.6f} seconds")
         print("Decrypted Text: " + decrypted_text)
 
 

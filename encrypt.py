@@ -1,6 +1,8 @@
 import subprocess
 import os
 from PIL import Image
+import concurrent.futures
+import time
 
 
 def clear_console():
@@ -40,18 +42,16 @@ def set_pixel_color(image, x, y, color):
 
 
 def encode_text_in_image(image, text):
-    pixels = image.load()
-    width, _ = image.size
-    x, y = 0, 0
+    width, height = image.size
 
-    for bit in text:
-        color = (0, 0, 0) if bit == "1" else (255, 255, 255)
+    def plot_pixel(index):
+        x = index % width
+        y = index // width
+        color = (0, 0, 0) if text[index] == "1" else (255, 255, 255)
         set_pixel_color(image, x, y, color)
 
-        x += 1
-        if x == width:
-            x = 0
-            y += 1
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(plot_pixel, range(len(text)))
 
 
 def main():
@@ -61,19 +61,30 @@ def main():
     text = read_text_from_file(file_path)
 
     if text is not None:
+        start_time_binary = time.time()
         binary_data = get_binary_data(text)
-        text_length = len(binary_data)
+        end_time_binary = time.time()
 
+        text_length = len(binary_data)
         width, height = calculate_image_size(text_length)
 
-        print("Binary: " + binary_data)
-        print("Length: " + str(text_length))
-        print("Width: " + str(width) + " Height: " + str(height))
+        # print("Converting Text to Binary...")
+        # print("Binary: " + binary_data)
+        print('Converted text to binary successfully.')
+        print("Text Length (Binary): " + str(text_length))
+        print("Image: (Width: " + str(width) + " Height: " + str(height) + ")")
 
         background_color = (255, 0, 255)  # Magenta
         img = create_image(width, height, background_color)
 
+        start_time_plotting = time.time()
         encode_text_in_image(img, binary_data)
+        end_time_plotting = time.time()
+
+        print(f"Time taken to convert text to binary: {
+              end_time_binary - start_time_binary:.6f} seconds")
+        print(f"Time taken to plot image: {
+              end_time_plotting - start_time_plotting:.6f} seconds")
 
         img.show()
         img.save("image.png")
