@@ -5,21 +5,30 @@ import time
 
 
 def clear_console():
-    if os.name == "nt":
-        subprocess.call("cls", shell=True)
-    else:
-        subprocess.call("clear", shell=True)
+    """Clears the console depending on the OS."""
+    if os.name == "nt":  # For Windows
+        os.system("cls")
+    else:  # For Linux and MacOS
+        os.system("clear")
 
 
 def read_image(file_path):
+    """Reads an image from the specified file path."""
     try:
         return Image.open(file_path)
     except FileNotFoundError:
         print(f"Error: File '{file_path}' not found.")
         return None
+    except Exception as e:
+        print(f"Error opening image: {e}")
+        return None
 
 
 def decode_image(image):
+    """
+    Decodes binary data from the image, interpreting black pixels (0,0,0)
+    as '1' and white pixels (255,255,255) as '0'.
+    """
     pixels = image.load()
     width, height = image.size
     binary_data = ""
@@ -27,23 +36,29 @@ def decode_image(image):
     for y in range(height):
         for x in range(width):
             pixel = pixels[x, y]
+            # If pixel is black, consider it as '1', otherwise '0'
             binary_data += "1" if pixel == (0, 0, 0) else "0"
 
     return binary_data
 
 
 def binary_to_text(binary_data):
+    """
+    Converts a binary string into readable text, interpreting 8 bits (1 byte)
+    at a time.
+    """
     text = ""
     for i in range(0, len(binary_data), 8):
         byte = binary_data[i:i+8]
-        text += chr(int(byte, 2))
+        if len(byte) == 8:  # Only process full bytes
+            text += chr(int(byte, 2))
     return text
 
 
 def main():
     clear_console()
 
-    file_path = "image.png"
+    file_path = input("Enter the image file path to decode: ")
     encoded_image = read_image(file_path)
 
     if encoded_image is not None:

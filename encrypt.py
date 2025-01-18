@@ -1,5 +1,4 @@
 import subprocess
-import os
 from PIL import Image
 import concurrent.futures
 import time
@@ -13,6 +12,7 @@ def clear_console():
 
 
 def read_text_from_file(file_path):
+    """Reads text from the specified file."""
     try:
         with open(file_path, "r") as file:
             return file.read()
@@ -22,11 +22,16 @@ def read_text_from_file(file_path):
 
 
 def get_binary_data(text):
+    """Converts the text to a binary string."""
     return ''.join(format(ord(char), "08b") for char in text)
 
 
 def calculate_image_size(text_length):
-    side_length = int(text_length ** 0.5) + 1
+    """
+    Calculate minimum image size (width, height) 
+    required to store the binary data.
+    """
+    side_length = int((text_length ** 0.5) + 1)
     return side_length, side_length
 
 
@@ -35,6 +40,7 @@ def create_image(width, height, background_color):
 
 
 def set_pixel_color(image, x, y, color):
+    """Sets a pixel color at the specified (x, y) location."""
     try:
         image.putpixel((x, y), color)
     except IndexError:
@@ -57,7 +63,7 @@ def encode_text_in_image(image, text):
 def main():
     clear_console()
 
-    file_path = "data.txt"
+    file_path = input("Enter the text file path: ")
     text = read_text_from_file(file_path)
 
     if text is not None:
