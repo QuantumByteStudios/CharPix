@@ -1,2 +1,2 @@
-Pillow==11.2.1
+Pillow==11.3.0
 pycryptodome==3.23.0
